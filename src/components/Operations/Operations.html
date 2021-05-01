@@ -1,0 +1,32 @@
+<div>
+    <div style="background-color: white; margin-top: 20px; padding: 20px;">
+        <h2>Операции</h2>
+    </div>
+    
+    <div style="background-color: white; margin-top: 20px; padding: 20px;">
+        <div style="display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 10px">
+            <div><h6>Проводки</h6></div>
+        </div>
+    <tables :rows="localOpEntry"
+        :columns="columns2"
+    >
+    </tables>
+    </div>
+    <div style="background-color: white; margin-top: 20px; padding: 20px;">
+        <div style="display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px">
+        <div><h6>Счета проводок</h6></div>
+        </div>
+        <div>
+            <tables :rows="localActtPos"
+                :columns="columns1"
+            >
+            </tables>
+        </div>
+    </div>
+</div>

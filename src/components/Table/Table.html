@@ -1,0 +1,16 @@
+<div>
+  <div style="padding: 2px;" >
+      <table class="table table-bordered table-hover text-center">
+        <thead> 
+          <tr>
+            <th scope="col" v-for= "(item,key) in columns" :key= "'column-' + key">{{item}}</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr v-for= "(item,key) in rows" :key="key" @click="test(key)">
+              <td scope="row" v-for= "(items,key) in columns" :key= "'row-' + key">{{ item[items] }}</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
