@@ -4,9 +4,4 @@ import template from "./ErrorPage.html";
 export default Vue.extend({
   template,
   name: "ErrorPage",
-  data() {
-    return {
-      name: "Pavel",
-    };
-  },
 });

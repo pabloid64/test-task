@@ -1,16 +1,37 @@
 <div>
-  <div style="padding: 2px;" >
-      <table class="table table-bordered table-hover text-center">
-        <thead> 
-          <tr>
-            <th scope="col" v-for= "(item,key) in columns" :key= "'column-' + key">{{item}}</th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr v-for= "(item,key) in rows" :key="key" @click="test(key)">
-              <td scope="row" v-for= "(items,key) in columns" :key= "'row-' + key">{{ item[items] }}</td>
-            </tr>
-        </tbody>
-      </table>
+  <table class="table table-bordered table-hover text-center align-middle">
+    <thead> 
+      <tr>
+        <th scope="col" v-for= "(item,key) in labels" :key= "'labels-' + key">{{item}}</th>
+        <th scope="col"> Действия </th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr v-for= "(item,key) in rows" :key="key" @click="selectRow(key)">
+          <td scope="row" v-for= "(items,keys) in columns" :key="'row-' + keys">
+              {{item[items]}}
+          </td>
+          <td scope="row">
+            <div>
+              <button @click.stop="editRow(item)" type="button" class="btn btn-secondary btn-sm">{{'edit'}}</button>
+              <button @click.stop="deleteRow(item)" type="button" class="btn btn-secondary btn-sm">delete</button>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+  <div>
+    <a v-if="!(isEdit || isNew)" class="link" @click="addRow"> Добавить строку в таблицу + </a>
+  </div>
+  <div v-if="isEdit || isNew">
+    <div class="fw-bold">{{ isNew ? 'Добавление строки' : 'Редактирование строки' }}</div>
+    <div v-for="(item,key) in columns" :key="key">
+      <div>{{labels[key]}}</div>
+      <input v-model="selectedEdit[item]">
     </div>
+    <div class="mt-1">
+      <button @click="saveRow" type="button" class="btn btn-secondary btn-sm">{{'save'}}</button>
+      <button @click="cancelRow" type="button" class="btn btn-secondary btn-sm">{{'canсel'}}</button>
+    </div>
+  </div>
 </div>

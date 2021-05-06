@@ -2,29 +2,29 @@ import api from "../../services/api.services";
 
 const account = {
   state: {
-    acttPos: [],
-    actt: [],
+    acctPos: [],
+    acct: [],
     opDate: [],
     opEntry: [],
     loading: false,
   },
   getters: {
-    localActtPos: (state) => state.acttPos,
-    localActt: (state) => state.actt,
+    localAcctPos: (state) => state.acctPos,
+    localAcct: (state) => state.acct,
     localOpDate: (state) => {
-        return state.opDate.sort(function(a, b) {
-            return new Date(b.OpDate) - new Date(a.OpDate);
-        })
+      return state.opDate.sort(function (a, b) {
+        return new Date(b.OpDate) - new Date(a.OpDate);
+      });
     },
     localOpEntry: (state) => state.opEntry,
-    localLoading: (state) => state.loading
+    localLoading: (state) => state.loading,
   },
   mutations: {
-    setActtPos: function (state, val) {
-      state.acttPos = val;
+    setAcctPos: function (state, val) {
+      state.acctPos = val;
     },
-    setActt: function (state, val) {
-      state.actt = val;
+    setAcct: function (state, val) {
+      state.acct = val;
     },
     setOpDate: function (state, val) {
       state.opDate = val;
@@ -33,7 +33,7 @@ const account = {
       state.opEntry = val;
     },
     setLoading: function (state, val) {
-        state.loading = val;
+      state.loading = val;
     },
   },
   actions: {
@@ -41,10 +41,10 @@ const account = {
       try {
         commit("setLoading", true);
         let result = await api.apiAcctPos();
-        commit("setActtPos", result);
+        commit("setAcctPos", result);
         commit("setLoading", false);
       } catch (err) {
-        //commit("setActtPosErr", err);
+        //commit("setAcctPosErr", err);
         console.log(err);
         commit("setLoading", false);
       }
@@ -53,7 +53,7 @@ const account = {
       try {
         commit("setLoading", true);
         let result = await api.apiAcct();
-        commit("setActt", result);
+        commit("setAcct", result);
         commit("setLoading", false);
       } catch (err) {
         console.log(err);

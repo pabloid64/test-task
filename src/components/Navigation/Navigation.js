@@ -4,20 +4,18 @@ import template from "./Navigation.html";
 export default Vue.extend({
   template,
   name: "Navigation",
-  data() {
-    return {
-      name: "Pavel",
-    };
-  },
   methods: {
-    goToAcc() {
-      this.$router.push("/");
+    goToAcct() {
+      this.$router.push("/")
+      .catch(() => {});
     },
     goToOp() {
-      this.$router.push("operations");
+      this.$router.push("operations")
+      .catch(() => {});
     },
-    goToOpD() {
-      this.$router.push("operatingdays");
+    goToOpDays() {
+      this.$router.push("operatingdays")
+      .catch(() => {});
     },
   },
 });
